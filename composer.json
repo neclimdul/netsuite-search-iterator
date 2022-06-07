@@ -24,11 +24,11 @@
     "php": ">=8.0",
     "ext-json": "*",
     "ext-soap": "*",
-    "phpstan/phpstan": "^1.7",
     "ryanwinchester/netsuite-php": "*"
   },
   "require-dev": {
     "phpspec/prophecy-phpunit": "^2.0",
+    "phpstan/phpstan": "^1.7",
     "phpunit/phpunit": "^9.5"
   },
   "autoload": {
