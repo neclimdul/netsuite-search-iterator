@@ -1,0 +1,43 @@
+{
+  "name": "neclimdul/nesuite-search-iterator",
+  "type": "library",
+  "description": "Library to help iterating search results in netsuite-php.",
+  "keywords": [
+    "http",
+    "soap",
+    "web service",
+    "client",
+    "HTTP client"
+  ],
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "James Gilliland",
+      "email": "neclimdul@gmail.com",
+      "homepage": "https://github.com/neclimdul"
+    }
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "php": ">=8.0",
+    "ext-json": "*",
+    "ext-soap": "*",
+    "ryanwinchester/netsuite-php": "*"
+  },
+  "require-dev": {
+    "phpspec/prophecy-phpunit": "^2.0",
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "NecLimDul\\NetSuiteSearchIterator\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NecLimDul\\NetSuiteSearchIterator\\Tests\\": "tests/"
+    }
+  }
+}
