@@ -1,5 +1,5 @@
 {
-  "name": "neclimdul/nesuite-search-iterator",
+  "name": "neclimdul/netsuite-search-iterator",
   "type": "library",
   "description": "Library to help iterating search results in netsuite-php.",
   "keywords": [
