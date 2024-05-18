@@ -143,13 +143,13 @@ class SearchIterator implements \Iterator, \Countable {
      *
      * @param \NetSuite\NetSuiteService $netSuiteService
      * @param \NetSuite\Classes\SearchRecord $search
-     * @param class-string<T>|int $type
+     * @param int|class-string<T>|null $type
      * @param int $pageSize
      */
     public function __construct(
         NetSuiteService $netSuiteService,
         SearchRecord $search,
-        $type = NULL,
+        int|string $type = NULL,
         int $pageSize = 50
     ) {
         $this->netSuiteService = $netSuiteService;
