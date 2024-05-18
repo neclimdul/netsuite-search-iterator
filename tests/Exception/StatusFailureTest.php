@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NecLimDul\NetSuiteSearchIterator\Tests\Exception;
 
 use NecLimDul\NetSuiteSearchIterator\Exception\StatusFailure;
@@ -16,9 +18,11 @@ class StatusFailureTest extends TestCase {
     /**
      * @covers ::__construct
      */
-    public function testConstruct() {
+    public function testConstruct(): void {
+        $detail = new StatusDetail();
+        $detail->message = 'asdf';
         $status = new Status();
-        $status->statusDetail = ['asdf'];
+        $status->statusDetail = [$detail];
         $e = new StatusFailure($status);
         $this->assertSame(0, $e->getCode());
         $this->assertSame(
@@ -41,7 +45,7 @@ class StatusFailureTest extends TestCase {
     /**
      * @covers ::getStatus
      */
-    public function testStatus() {
+    public function testStatus(): void {
         $status = new Status();
         $e = new StatusFailure($status);
         $this->assertSame($status, $e->getStatus());
@@ -50,7 +54,7 @@ class StatusFailureTest extends TestCase {
     /**
      * @covers ::containsCode
      */
-    public function testContainsCode() {
+    public function testContainsCode(): void {
         $status = new Status();
         $detail = new StatusDetail();
         $detail->code = StatusDetailCodeType::INVALID_KEY_OR_REF;
@@ -65,9 +69,11 @@ class StatusFailureTest extends TestCase {
     /**
      * @covers ::setMessage
      */
-    public function testSetMessage() {
+    public function testSetMessage(): void {
+        $detail = new StatusDetail();
+        $detail->message = 'asdf';
         $status = new Status();
-        $status->statusDetail = ['asdf'];
+        $status->statusDetail = [$detail];
         $e = new StatusFailure($status);
         $e->setMessage('Something extra');
         $this->assertSame(

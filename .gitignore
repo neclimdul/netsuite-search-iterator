@@ -8,3 +8,7 @@ composer.lock
 # Files
 .DS_Store
 composer.lock
+
+# Ignore phpunit caches
+.phpunit.cache
+.phpunit.result.cache

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NecLimDul\NetSuiteSearchIterator\Tests;
 
 use NecLimDul\NetSuiteSearchIterator\Exception\StatusFailure;
@@ -13,6 +15,7 @@ use NetSuite\NetSuiteService;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 
 /**
  * @coversDefaultClass \NecLimDul\NetSuiteSearchIterator\SearchIterator
@@ -22,9 +25,9 @@ class SearchIteratorTest extends TestCase {
     use ProphecyTrait;
 
     /**
-     * @var \NetSuite\NetSuiteService|\Prophecy\Prophecy\ObjectProphecy
+     * @var \Prophecy\Prophecy\ObjectProphecy<\NetSuite\NetSuiteService>
      */
-    protected $service;
+    protected ObjectProphecy $service;
 
     protected function setUp(): void {
         parent::setUp();
@@ -36,7 +39,7 @@ class SearchIteratorTest extends TestCase {
      *
      * @covers ::__construct
      */
-    public function testConstruction() {
+    public function testConstruction(): void {
         $this->service->search(Argument::any())
             ->shouldNotBeCalled();
         $this->service->searchMoreWithId(Argument::any())
@@ -50,7 +53,7 @@ class SearchIteratorTest extends TestCase {
      *
      * @covers \NecLimDul\NetSuiteSearchIterator\SearchIterator
      */
-    public function testIteration() {
+    public function testIteration(): void {
         $result1 = new SearchResponse();
         $result1->searchResult = new SearchResult();
         $result1->searchResult->status = new Status();
@@ -117,7 +120,7 @@ class SearchIteratorTest extends TestCase {
      *
      * @covers \NecLimDul\NetSuiteSearchIterator\SearchIterator
      */
-    public function testIterationEmpty() {
+    public function testIterationEmpty(): void {
         $result1 = new SearchResponse();
         $result1->searchResult = new SearchResult();
         $result1->searchResult->status = new Status();
@@ -154,7 +157,7 @@ class SearchIteratorTest extends TestCase {
      *
      * @covers ::processResults
      */
-    public function testIteratorException() {
+    public function testIteratorException(): void {
         $result1 = new SearchResponse();
         $result1->searchResult = new SearchResult();
         $result1->searchResult->status = new Status();
@@ -192,7 +195,7 @@ class SearchIteratorTest extends TestCase {
      *
      * @covers ::processResults
      */
-    public function testIteratorNullResult() {
+    public function testIteratorNullResult(): void {
         $result1 = new SearchResponse();
         $result1->searchResult = new SearchResult();
         $result1->searchResult->status = new Status();
